@@ -9,12 +9,24 @@ import com.example.demo.Calculator;
 public class CalculationUnitTests {
 
 	@Test
-	public void test() {
-		// new Calculator class 的物件出來，讓 test() 方法抓到 Calculator class。
+	public void add() {
+		
 		Calculator c = new Calculator();
 		int result = c.add(1, 2);
-		// assertEquals() 意思，即"我認為 3 等於 result "， assert 為斷言，Equals 為相等。
-		//assertEquals() 會檢查 3 是否等於 result。
+		
+		assertNotNull(result);
 		assertEquals(3, result);
+		assertTrue(result>1);
+		assertFalse(result<0);
+	}
+	
+	@Test
+	public void divide() {
+		
+		Calculator c = new Calculator();
+		
+		assertThrows(ArithmeticException.class, ()-> {
+			c.divide(1, 0);
+		});
 	}
 }
